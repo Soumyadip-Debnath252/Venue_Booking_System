@@ -1,0 +1,66 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+    <nav class="fh5co-nav" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <div id="fh5co-logo"><a href="{% url 'home-page' %}">Venue Booking<strong>.</strong></a></div>
+            </div>
+            <div class="col-xs-10 text-right menu-1">
+                <ul>
+                    <li><a href="{% url 'home-page'%}">Hi {{ request.user.get_full_name }}</a></li>
+                    <li><a href="{% url 'about-page'%}">About</a></li>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="{% url 'Catalouge-page'%}">Venue</a>
+                        <!-- <ul class="dropdown">
+                            <li><a href="#">HTML5</a></li>
+                            <li><a href="#">CSS3</a></li>
+                            <li><a href="#">Sass</a></li>
+                            <li><a href="#">jQuery</a></li>
+                        </ul> -->
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">Settings</a>
+                        <ul class="dropdown">
+                            <li><a href="{% url 'book-histroy' %}">Booking Details</a></li>
+                            <li><a href="{% url 'logout-page'%}">Logout</a>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'contact-page'%}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
+{% else %}
+    <nav class="fh5co-nav" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <div id="fh5co-logo"><a href="{% url 'home-page' %}">Venue Booking<strong>.</strong></a></div>
+            </div>
+            <div class="col-xs-10 text-right menu-1">
+                <ul>
+                    <li class="active"><a href="{% url 'home-page'%}">Home</a></li>
+                    <li><a href="{% url 'about-page'%}">About</a></li>
+                    <li><a href="{% url 'Login-page'%}" >LOGIN</a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="{% url 'Catalouge-page'%}">Venue</a>
+                        <!-- <ul class="dropdown">
+                            <li><a href="#">HTML5</a></li>
+                            <li><a href="#">CSS3</a></li>
+                            <li><a href="#">Sass</a></li>
+                            <li><a href="#">jQuery</a></li>
+                        </ul> -->
+                    </li>
+                    <li><a href="{% url 'contact-page'%}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>
+{% endif %}

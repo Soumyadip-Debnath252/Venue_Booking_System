@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Wedding &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  <!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'myapp/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'myapp/css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'myapp/css/bootstrap.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'myapp/css/magnific-popup.css' %}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{% static 'myapp/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'myapp/css/owl.theme.default.min.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'myapp/js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'myapp/js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	{% include "./header.html" %}
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url({% static 'myapp/images/img_bg_3.jpg' %});">
+		<div class="overlay"></div>
+		<div class="fh5co-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Book Your Venue</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+    <div class="container">
+        <div class="row">
+			<div class="col-6">
+				<p>Venue:- {{ gallery.vname }}</p>
+				<p>About Venue:-</p>
+				<p>{{ gallery.vdescriptions }}</p>
+				<p>Venue Type:- {{gallery.vtype}}</p>
+				<p>Venue Charge:-{{gallery.vcharges}}
+				<p>Venue  Address:-{{gallery.vaddress}}
+			</div>
+			<div class="col-6">
+			<form name="frm" method="post">
+				{% csrf_token %}
+					{% for frm in form %}
+						<div class="form-group">
+							{{ frm.label_tag }} <label class="text-danger">{{ frm.errors|striptags }}</label>
+							{{ frm }}
+						</div>
+					{% endfor %}
+						<input type="submit" name="ok" value="Book" class="btn btn-primary">
+			</form>
+        {% if messages %}
+                {% for msg in messages %}
+                    {% if msg.tags == 'success' %}
+                        <div class="alert alert-success">
+                        {{ msg }}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger">
+                        {{ msg }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        </div>
+        </div>
+    </div>
+	{% include "./footer.html" %}
+	<!-- jQuery -->
+	<script src="{% static 'myapp/js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'myapp/js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'myapp/js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'myapp/js/jquery.waypoints.min.js' %}"></script>
+	<!-- Carousel -->
+	<script src="{% static 'myapp/js/owl.carousel.min.js' %}"></script>
+	<!-- countTo -->
+	<script src="{% static 'myapp/js/jquery.countTo.js' %}"></script>
+
+	<!-- Stellar -->
+	<script src="{% static 'myapp/js/jquery.stellar.min.js' %}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static 'myapp/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'myapp/js/magnific-popup-options.js' %}"></script>
+
+	<!-- Main -->
+	<script src="{% static 'myapp/js/main.js' %}"></script> 
+
+	</body>
+</html>
+
